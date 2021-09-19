@@ -20,7 +20,7 @@ class CustomerCreate(CustomerBase):
 
 class Customer(CustomerBase):
     id: int
-    orders: List['Order'] = []
+    orders: List["Order"] = []
 
 
     class Config:
@@ -58,7 +58,7 @@ class OrderCreate(OrderBase):
 class Order(OrderBase):
     id: int
     customer_id: int
-    line_items: List['OrderItem'] = []
+    line_items: List["OrderItem"] = []
 
 
     class Config:
