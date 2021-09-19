@@ -46,8 +46,12 @@ def read_customer(customer_id: int, db: Session = Depends(get_db)):
 
 ############################################################## Дата заказа
 # Создание нового заказа
-
-
-
+@app.post("/customers/{customer_id}/orders/", response_model=schemas.Order)
+def create_order_for_customaser(customer_id: int, order: schemas.OrderCreate, db: Session = Depends(get_db)):
+    return crud.create_orders(db=db, order=order, customer_id=customer_id)
 
 # Просмотр даты заказа
+@app.get("/orders/", response_model=List[schemas.Order])
+def read_orders(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    orders = crud.get_orders(db, skip=skip, limit=limit)
+    return orders

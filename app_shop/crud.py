@@ -52,8 +52,8 @@ def get_orders(db: Session, skip: int = 0, limit: int = 100):
 
 
 # Создание заказа
-def create_orders(db: Session, order: schemas.OrderCreate, customer_id_id: int):
-    db_order = models.Order(**order.dict(), customer_id=customer_id_id)
+def create_orders(db: Session, order: schemas.OrderCreate, customer_id: int):
+    db_order = models.Order(**order.dict(), customer_id=customer_id)
     db.add(db_order)
     db.commit()
     db.refresh(db_order)

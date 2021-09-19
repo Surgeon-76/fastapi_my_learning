@@ -27,8 +27,7 @@ from sqlalchemy.sql.sqltypes import DateTime
 
 ########################################### Заказы(дата)
 class OrderBase(BaseModel):
-    pass
-    # date_placed: datetime
+    date_placed: datetime
 
 
 class OrderCreate(OrderBase):
@@ -38,7 +37,7 @@ class OrderCreate(OrderBase):
 class Order(OrderBase):
     id: int
     customer_id: int
-    date_placed: datetime
+    # date_placed: datetime
     #line_items: List["OrderItem"] = []
 
 
