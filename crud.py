@@ -1,8 +1,6 @@
-from os import name
 from sqlalchemy.orm import Session
 
 from . import models, schemas
-
 
 ############################################ Покупатели
 # Ищем покупателя по id
