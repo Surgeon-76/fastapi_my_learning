@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import List
 
 from pydantic import BaseModel
+from sqlalchemy.sql.sqltypes import DateTime
 
 
 # ########################################## Товар
@@ -26,7 +27,8 @@ from pydantic import BaseModel
 
 ########################################### Заказы(дата)
 class OrderBase(BaseModel):
-    date_placed: datetime
+    pass
+    # date_placed: datetime
 
 
 class OrderCreate(OrderBase):
@@ -36,6 +38,7 @@ class OrderCreate(OrderBase):
 class Order(OrderBase):
     id: int
     customer_id: int
+    date_placed: datetime
     #line_items: List["OrderItem"] = []
 
 
@@ -69,8 +72,6 @@ class CustomerBase(BaseModel):
     last_name: str
     username: str
     email: str
-    created_on: datetime
-    updated_on: datetime
 
 
 class CustomerCreate(CustomerBase):
@@ -79,6 +80,9 @@ class CustomerCreate(CustomerBase):
 
 class Customer(CustomerBase):
     id: int
+    created_on: datetime
+    updated_on: datetime
+
     orders: List[Order] = []
 
 

@@ -45,15 +45,19 @@ def create_customer(db: Session, customer: schemas.CustomerCreate):
 #     return db_item
 
 
-# ############################################ Заказы(дата)
-# # Выводим список заказов покупателя(-лей)
-# def get_orders(db: Session, skip: int = 0, limit: int = 100):
-#     return db.query(models.Order).offset(skip).limit(limit).all()
+############################################ Заказы(дата)
+# Выводим список заказов покупателя(-лей)
+def get_orders(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Order).offset(skip).limit(limit).all()
 
 
-# # Создание заказа
-# def create_orders(db: Session, order: schemas.OrderCreate, customer_id: int):
-#     db_order = models.Order()
+# Создание заказа
+def create_orders(db: Session, order: schemas.OrderCreate, customer_id_id: int):
+    db_order = models.Order(**order.dict(), customer_id=customer_id_id)
+    db.add(db_order)
+    db.commit()
+    db.refresh(db_order)
+    return db_order
 
 # ############################################ Заказ - Товар(количество)
 
