@@ -29,20 +29,20 @@ def create_customer(db: Session, customer: schemas.CustomerCreate):
     return db_customer
 
 
-# ############################################ Товар
-# # Выводим список товаров в заказе
-# def get_items(db: Session, skip: int = 0, limit: int = 100):
-#     return db.query(models.Item).offset(skip).limit(limit).all()
+############################################ Товар
+# Выводим список товаров в заказе
+def get_items(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Item).offset(skip).limit(limit).all()
 
 
-# # Создание товара
-# def create_item(db: Session, item: schemas.ItemCreate):
-#     db_item = models.Item(name=item.name, cost_price=item.cost_price, \
-#         selling_price=item.selling_price, quantity=item.quantity)
-#     db.add(db_item)
-#     db.commit()
-#     db.refresh(db_item)
-#     return db_item
+# Создание товара
+def create_item(db: Session, item: schemas.ItemCreate):
+    db_item = models.Item(name=item.name, cost_price=item.cost_price, \
+        selling_price=item.selling_price, quantity=item.quantity)
+    db.add(db_item)
+    db.commit()
+    db.refresh(db_item)
+    return db_item
 
 
 ############################################ Заказы(дата)
