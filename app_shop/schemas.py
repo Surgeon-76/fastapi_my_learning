@@ -6,47 +6,47 @@ from sqlalchemy.sql.sqltypes import DateTime
 
 
 
-# ########################################## Товар
-# class ItemBase(BaseModel):
-#     name: str
-#     cost_price: float
-#     selling_price: float
-#     quantity: int
+########################################## Товар
+class ItemBase(BaseModel):
+    name: str
+    cost_price: float
+    selling_price: float
+    quantity: int
 
 
-# class ItemCreate(ItemBase):
-#     pass
+class ItemCreate(ItemBase):
+    pass
 
 
-# class Item(ItemBase):
-#     id: int
+class Item(ItemBase):
+    id: int
 
 
-#     class Config:
-#         orm_mode = True
+    class Config:
+        orm_mode = True
 
 
-# ########################################### Заказ - Товар(кол-во)
-# class OrderItemBase(BaseModel):
-#     quantity: int
+########################################### Заказ - Товар(кол-во)
+class OrderItemBase(BaseModel):
+    quantity: int
 
 
-# class OrderItemCreate(OrderItemBase):
-#     pass
+class OrderItemCreate(OrderItemBase):
+    pass
 
 
-# class OrderItem(OrderItemBase):
-#     id: int
-#     order_id: int
-#     item_id: int
-#     item: List[Item] = []
+class OrderItem(OrderItemBase):
+    id: int
+    order_id: int
+    item_id: int
+    item: List[Item] = []
 
 
-#     class Config:
-#         orm_mode = True
+    class Config:
+        orm_mode = True
 
 
-########################################### Заказы(дата)
+########################################## Заказы(дата)
 class OrderBase(BaseModel):
     date_placed: datetime
 
@@ -58,8 +58,7 @@ class OrderCreate(OrderBase):
 class Order(OrderBase):
     id: int
     customer_id: int
-    # date_placed: datetime
-    #line_items: List[OrderItem] = []
+    line_items: List[OrderItem] = []
 
 
     class Config:
@@ -83,8 +82,7 @@ class Customer(CustomerBase):
     id: int
     created_on: datetime
     updated_on: datetime
-
-    orders: List["Order"] = []
+    orders: List[Order] = []
 
 
     class Config:
