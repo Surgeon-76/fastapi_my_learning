@@ -12,7 +12,7 @@ class Customer(Base):
     last_name = Column(String(100), nullable=False, index=True)
     username = Column(String(50), nullable=False, index=True)
     email = Column(String(200), nullable=False, index=True)
-    hashed_password = Column(String(20), nullable=False)
+    hashed_password = Column(String(50), nullable=False)
     created_on = Column(DateTime(), default=datetime.now, index=True)
     updated_on = Column(DateTime(), default=datetime.now,
                         onupdate=datetime.now)

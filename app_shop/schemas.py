@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List
 
-from pydantic import BaseModel
+from pydantic import BaseModel,Field
 from sqlalchemy.sql.sqltypes import DateTime
 
 
@@ -74,7 +74,7 @@ class CustomerBase(BaseModel):
 
 
 class CustomerCreate(CustomerBase):
-    password: str
+    password: str = Field(..., min_length=8, max_length=50)
 
 
 class Customer(CustomerBase):
