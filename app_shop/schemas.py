@@ -58,7 +58,7 @@ class OrderCreate(OrderBase):
 class Order(OrderBase):
     id: int
     customer_id: int
-    line_items: List[OrderItem] = []
+    order_items: List[OrderItem] = []
 
 
     class Config:
