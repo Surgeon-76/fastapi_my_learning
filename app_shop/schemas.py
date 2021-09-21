@@ -5,6 +5,7 @@ from pydantic import BaseModel,Field
 from sqlalchemy.sql.sqltypes import DateTime
 
 
+
 # ########################################## Товар
 # class ItemBase(BaseModel):
 #     name: str
@@ -19,6 +20,26 @@ from sqlalchemy.sql.sqltypes import DateTime
 
 # class Item(ItemBase):
 #     id: int
+
+
+#     class Config:
+#         orm_mode = True
+
+
+# ########################################### Заказ - Товар(кол-во)
+# class OrderItemBase(BaseModel):
+#     quantity: int
+
+
+# class OrderItemCreate(OrderItemBase):
+#     pass
+
+
+# class OrderItem(OrderItemBase):
+#     id: int
+#     order_id: int
+#     item_id: int
+#     item: List[Item] = []
 
 
 #     class Config:
@@ -45,25 +66,6 @@ class Order(OrderBase):
         orm_mode = True
 
 
-# ########################################### Заказ - Товар(кол-во)
-# class OrderItemBase(BaseModel):
-#     quantity: int
-
-
-# class OrderItemCreate(OrderItemBase):
-#     pass
-
-
-# class OrderItem(OrderItemBase):
-#     id: int
-#     order_id: int
-#     item_id: int
-#     item: List[Item] = []
-
-
-#     class Config:
-#         orm_mode = True
-
 
 ########################################## Покупатели
 class CustomerBase(BaseModel):
@@ -82,7 +84,7 @@ class Customer(CustomerBase):
     created_on: datetime
     updated_on: datetime
 
-    orders: List[Order] = []
+    orders: List["Order"] = []
 
 
     class Config:
