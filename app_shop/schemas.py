@@ -59,7 +59,7 @@ class Order(OrderBase):
     id: int
     customer_id: int
     # date_placed: datetime
-    #line_items: List["OrderItem"] = []
+    #line_items: List[OrderItem] = []
 
 
     class Config:
