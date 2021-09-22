@@ -6,24 +6,24 @@ from sqlalchemy.sql.sqltypes import DateTime
 
 
 
-# ########################################## Товар
-# class ItemBase(BaseModel):
-#     name: str
-#     cost_price: float
-#     selling_price: float
-#     quantity: int
+########################################## Товар
+class ItemBase(BaseModel):
+    name: str
+    cost_price: float
+    selling_price: float
+    quantity: int
 
 
-# class ItemCreate(ItemBase):
-#     pass
+class ItemCreate(ItemBase):
+    pass
 
 
-# class Item(ItemBase):
-#     id: int
+class Item(ItemBase):
+    id: int
 
 
-#     class Config:
-#         orm_mode = True
+    class Config:
+        orm_mode = True
 
 
 ########################################### Заказ - Товар(кол-во)
@@ -39,7 +39,7 @@ class OrderItem(OrderItemBase):
     id: int
     order_id: int
     item_id: int
-    #item: List[Item] = []
+    item: List[Item] = []
 
 
     class Config:
