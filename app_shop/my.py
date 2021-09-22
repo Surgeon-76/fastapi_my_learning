@@ -55,3 +55,10 @@ def create_order_for_customaser(customer_id: int, order: schemas.OrderCreate, db
 def read_orders(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     orders = crud.get_orders(db, skip=skip, limit=limit)
     return orders
+
+############################################################## Товары
+# Создание товара
+
+def create_items(item_1d, item: schemas.ItemCreate, db: Session = Depends(get_db)):
+    
+
