@@ -26,24 +26,24 @@ from sqlalchemy.sql.sqltypes import DateTime
 #         orm_mode = True
 
 
-# ########################################### Заказ - Товар(кол-во)
-# class OrderItemBase(BaseModel):
-#     quantity: int
+########################################### Заказ - Товар(кол-во)
+class OrderItemBase(BaseModel):
+    quantity: int
 
 
-# class OrderItemCreate(OrderItemBase):
-#     pass
+class OrderItemCreate(OrderItemBase):
+    pass
 
 
-# class OrderItem(OrderItemBase):
-#     id: int
-#     order_id: int
-#     item_id: int
-#     item: List[Item] = []
+class OrderItem(OrderItemBase):
+    id: int
+    order_id: int
+    item_id: int
+    #item: List[Item] = []
 
 
-#     class Config:
-#         orm_mode = True
+    class Config:
+        orm_mode = True
 
 
 ########################################### Заказы(дата)
@@ -59,7 +59,7 @@ class Order(OrderBase):
     id: int
     customer_id: int
     # date_placed: datetime
-    #line_items: List[OrderItem] = []
+    line_items: List[OrderItem] = []
 
 
     class Config:
