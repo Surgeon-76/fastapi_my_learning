@@ -28,6 +28,8 @@ class Item(ItemBase):
 
 ########################################### Заказ - Товар(кол-во)
 class OrderItemBase(BaseModel):
+    order_id: int
+    item_id: int
     quantity: int
 
 
@@ -37,8 +39,8 @@ class OrderItemCreate(OrderItemBase):
 
 class OrderItem(OrderItemBase):
     id: int
-    order_id: int
-    item_id: int
+    # order_id: int
+    # item_id: int
     item: List[Item] = []
 
 
@@ -58,7 +60,6 @@ class OrderCreate(OrderBase):
 class Order(OrderBase):
     id: int
     customer_id: int
-    # date_placed: datetime
     line_items: List[OrderItem] = []
 
 

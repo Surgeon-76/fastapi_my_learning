@@ -60,4 +60,20 @@ def create_orders(db: Session, order: schemas.OrderCreate, customer_id: int):
     return db_order
 
 # ############################################ Заказ - Товар(количество)
+# Выводим список связей Заказ - Товаров
+def get_order_items(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.OrderItem).offset(skip).limit(limit).all()
+
+
+# Создание связи Заказ - Товар
+def create_order_items(db: Session, order_item: schemas.OrderItemCreate):
+    # db_order_items = models.OrderItem(**order_item.dict(), order_id=order_id, \
+    #     item_id=item_id, quantity=quantity)
+    db_order_items = models.OrderItem(order_id=order_item.order_id, \
+        item_id=order_item.item_id, quantity=order_item.quantity)
+    db.add(db_order_items)
+    db.commit()
+    db.refresh(db_order_items)
+    return db_order_items
+
 
