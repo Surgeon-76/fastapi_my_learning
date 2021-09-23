@@ -58,7 +58,12 @@ def read_orders(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 ############################################################## Товары
 # Создание товара
+@app.post("/items/", response_model=schemas.Item)
+def create_items(item: schemas.ItemCreate, db: Session = Depends(get_db)):
+    return crud.create_item(db=db, item=item)
 
-def create_items(item_1d, item: schemas.ItemCreate, db: Session = Depends(get_db)):
-    
-
+# Просмотр товара
+@app.get("/items/", response_model=List[schemas.Item])
+def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    items = crud.get_items(db, skip=skip, limit=limit)
+    return items
