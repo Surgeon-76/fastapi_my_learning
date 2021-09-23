@@ -85,7 +85,7 @@ class Customer(CustomerBase):
     created_on: datetime
     updated_on: datetime
 
-    orders: List["Order"] = []
+    orders: List[Order] = []
 
 
     class Config:
