@@ -73,7 +73,7 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 # Создание связи
 @app.post("/links/", response_model=schemas.OrderItem)
 def create_links(links: schemas.OrderItemCreate, db: Session = Depends(get_db)):
-    return crud.create_order_items(db=db, links=links)
+    return crud.create_order_items(db=db, order_item=links)
     
 # Просмотр связи
 @app.get("/links/", response_model=List[schemas.OrderItem])
