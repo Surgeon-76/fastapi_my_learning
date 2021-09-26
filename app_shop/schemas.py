@@ -41,7 +41,7 @@ class OrderItem(OrderItemBase):
     id: int
     # order_id: int
     # item_id: int
-    item: List[Item] = []
+    item: Item
 
 
     class Config:
